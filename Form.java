@@ -21,7 +21,7 @@ import java.util.Map;
  *
  * This class is responsible for arranging sections, questions, options etc of the form into an ordered format
  *
- *   Event Form is of the following structure, stored as a Map <String, Map <String, Map <String, String>>>
+ *   Form is of the following structure, stored as a Map <String, Map <String, Map <String, String>>>
  *
  *   sections:
  *   ID --
@@ -32,8 +32,6 @@ import java.util.Map;
  *       |--- numQuestions
  *       |
  *       |--- sectionType
- *       |--- action type [nextSection, submit, goToSection]
- *       |--- action value
  *
  *   questions:
  *   ID --
@@ -42,28 +40,17 @@ import java.util.Map;
  *       |--- description
  *       |--- title
  *       |
- *       |--- response
- *       |
  *       |--- questionType
- *       |--- responseType [date (phase 1), time, checkBox, radioButton (phase 1), dropDown, longAnswer (phase 1), shortAnswer, file]
+ *       |--- responseType
  *       |--- isRequired
  *       |
  *       |--- hasOptions
  *       |--- numOptions
  *       |
- *       |--- validationType
- *       |--- validationCondition
- *       |--- validationCompareOperands
- *       |--- validationErrorText
- *       |
- *       |--- isDuration     - for time
- *       |
- *       |--- includeTime    |- for date
- *       |--- includeYear    |
- *       |
- *       |--- allowedFileTypes   |
- *       |--- maxFileSize        |- for file
- *       |--- maxNumFiles        |
+ *       |--- validationType            |
+ *       |--- validationCondition       |--- Optional validation parameters that you will need to 
+ *       |--- validationCompareOperands |    implement youself in the abstract validation callback provided
+ *       |--- validationErrorText       |
  *
  *   options:
  *   ID --
@@ -71,10 +58,7 @@ import java.util.Map;
  *       |--- position
  *       |--- title
  *       |
- *       |--- response
- *       |
  *       |--- responseType
- *       |--- goToSectionBasedOnInput (sectionID)     - only for dropdown and radio button
  *
  *
  */
@@ -111,13 +95,11 @@ public abstract class Form <S, Q, R> {
         KEY_QUESTION_IS_REQUIRED ("isRequired"),
         KEY_QUESTION_HAS_OPTIONS ("hasOptions"),
         KEY_QUESTION_NUM_OPTIONS ("numOptions"),
-        KEY_QUESTION_RESPONSE ("response"),
 
         KEY_OPTION_RESPONSE_TYPE ("responseType"),
         KEY_OPTION_QUESTION_ID ("questionID"),
         KEY_OPTION_POSITION ("position"),
         KEY_OPTION_TITLE ("title"),
-        KEY_OPTION_RESPONSE ("response")
         ;
 
         private String key;
