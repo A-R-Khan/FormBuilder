@@ -233,5 +233,10 @@ public class FormView extends FrameLayout {
             // use this to return an enumeration from the encoded string
             return ResponseType.RESPONSE_TYPE_DEFAULT;
         }
+        
+        @Override public boolean validateFormResponses() {
+            // Enter your validation scheme here
+            return true;
+        }
     }
 }
