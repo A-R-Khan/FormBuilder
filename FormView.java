@@ -130,7 +130,7 @@ public class FormView extends FrameLayout {
     These enumerations are to hold the types of sections, questions and responses you will have
     eg: ResponseType can have RESPONSE_TYPE_DATE and QuestionType can have QUESTION_TYPE_YELLOW and QUESTION_TYPE_RED
 
-    These enumerations are returned in the callbacks so you can use them to inflate a different view if needed
+    These enumerations are automatically given as a parameter in the callbacks so you can use them to inflate a different view if needed
     */
     private enum SectionType {
         SECTION_TYPE_DEFAULT
