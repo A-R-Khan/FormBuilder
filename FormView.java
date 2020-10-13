@@ -7,20 +7,11 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.android.material.textview.MaterialTextView;
-import com.omada.junction.R;
-import com.omada.junction.data.models.EventModel;
-import com.omada.junction.viewmodels.content.EventViewHandler;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -61,7 +52,7 @@ public class FormView extends FrameLayout {
         try {
 
             // Creation of form class itself handles all the View inflation, etc just define your logic in the callbacks provided
-            this.form = new RegistrationForm(eventModel.getEventForm());
+            this.form = new RegistrationForm(getYourEncodedForm());
 
             // Keeping the first View to be the first Section
             addView(
